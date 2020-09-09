@@ -14,9 +14,24 @@ public class Main {
         };
 
         Library library = new Library(books, System.out);
-        library.printBooksContaining("Potter");
-        library.printBooksContaining("Sorcerer");
-        library.printBooksContaining("Intro");
-        library.printBooksContaining("Stone");
+        String[] potter = library.printBooksContaining("Potter");
+        String[] sorcerer = library.printBooksContaining("Sorcerer");
+        String[] intro = library.printBooksContaining("Intro");
+        String[] stone = library.printBooksContaining("Stone");
+
+        for (String book: potter) {
+            System.out.println(book);
+        }
+        for (String book: sorcerer) {
+            System.out.println(book);
+        }
+
+        for (String book: intro) {
+            System.out.println(book);
+        }
+
+        for (String book: stone) {
+            System.out.println(book);
+        }
     }
 }
