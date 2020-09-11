@@ -6,19 +6,19 @@ import java.util.Scanner;
 public class Game {
     private Scanner scanner;
     private int randomNumber;
-    private int guess;
 
     public Game(){
         this.scanner = new Scanner(System.in);
     }
 
     public void start() {
+        Player player = new Player();
+        player.gamePrompt();
         generateRandomNumber();
-        System.out.println("choose a random number between 1 and 100");
 
-        while (guess != randomNumber) {
-            createGuess();
-            checkRandomNumber();
+        while (player.guess != randomNumber) {
+            createGuess(player);
+            checkRandomNumber(player);
         }
     }
     public void generateRandomNumber(){
@@ -26,19 +26,18 @@ public class Game {
         this.randomNumber = rand.nextInt(100);
     }
 
-    public void createGuess(){
+    public void createGuess(Player player){
             int number = this.scanner.nextInt();
-            this.guess = number;
-        System.out.println("you entered " + this.guess);
+            player.guessedNumber(number);
     }
 
-    public void checkRandomNumber() {
-        if (this.guess > this.randomNumber) {
-            System.out.println("you guessed too high. guess lower");
-        } else if (this.guess < this.randomNumber) {
-            System.out.println("you guessed too low. guess higher");
+    public void checkRandomNumber(Player player) {
+        if (player.guess > this.randomNumber) {
+            player.guessTooHigh();
+        } else if (player.guess < this.randomNumber) {
+            player.guessTooLow();
         } else {
-            System.out.println("you win!");
+            player.winner();
             this.scanner.close();
         }
     }
