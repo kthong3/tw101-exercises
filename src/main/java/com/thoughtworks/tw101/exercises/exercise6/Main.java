@@ -5,11 +5,24 @@ package com.thoughtworks.tw101.exercises.exercise6;
 // Iterate through the list and make each monster take 10 points of damage. After you have damaged all of the monsters,
 // report the status of all monsters using a void reportStatus() method. ReportStatus should print the name and current hit 
 // points of the monster.
-// * Orcs are named “Orc” and have 20 initial hitpoints
+// * Orcs are named “Orc” and have 20 initial hit points
 // * Trolls are named “Troll”, have 40 hit points and only take half damage
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        ArrayList<Monster> monsters = new ArrayList<Monster>();
 
+        for (int i = 0; i < 2; i++) {
+            monsters.add(new Troll());
+            monsters.add(new Orc());
+        }
+
+        for (Monster monster: monsters) {
+            System.out.println(monsters.indexOf(monster));
+            monster.takeDamage(10);
+            monster.reportStatus();
+        }
     }
 }
